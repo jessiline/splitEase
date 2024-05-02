@@ -1,0 +1,635 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		303D21522BDB720100F5B51F /* InputBillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303D21512BDB720100F5B51F /* InputBillView.swift */; };
+		303D21562BDBEF5000F5B51F /* textField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303D21552BDBEF5000F5B51F /* textField.swift */; };
+		3063515E2BD7F78100A0CCAA /* splitEaseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3063515D2BD7F78100A0CCAA /* splitEaseApp.swift */; };
+		306351602BD7F78100A0CCAA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3063515F2BD7F78100A0CCAA /* ContentView.swift */; };
+		306351622BD7F78200A0CCAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 306351612BD7F78200A0CCAA /* Assets.xcassets */; };
+		306351652BD7F78200A0CCAA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 306351642BD7F78200A0CCAA /* Preview Assets.xcassets */; };
+		3063516F2BD7F78200A0CCAA /* splitEaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3063516E2BD7F78200A0CCAA /* splitEaseTests.swift */; };
+		306351792BD7F78200A0CCAA /* splitEaseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306351782BD7F78200A0CCAA /* splitEaseUITests.swift */; };
+		3063517B2BD7F78200A0CCAA /* splitEaseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3063517A2BD7F78200A0CCAA /* splitEaseUITestsLaunchTests.swift */; };
+		3065209E2BDD05C400C60256 /* tesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3065209D2BDD05C400C60256 /* tesView.swift */; };
+		306520A02BDD0C4900C60256 /* ItemInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3065209F2BDD0C4900C60256 /* ItemInputView.swift */; };
+		3081D02C2BDE5F1B00224BF9 /* BillDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3081D02B2BDE5F1A00224BF9 /* BillDetailsView.swift */; };
+		30DD0D642BE0915200B3A315 /* AddPersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DD0D632BE0915200B3A315 /* AddPersonView.swift */; };
+		30DD0D662BE0A43300B3A315 /* PickMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DD0D652BE0A43300B3A315 /* PickMenuView.swift */; };
+		30E003FE2BE2485D0031A3C6 /* pilimenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E003FD2BE2485D0031A3C6 /* pilimenuView.swift */; };
+		30E004002BE26CBA0031A3C6 /* FinalBillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E003FF2BE26CBA0031A3C6 /* FinalBillView.swift */; };
+		30E0854C2BDA05E7002DF3A4 /* MainPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E0854B2BDA05E7002DF3A4 /* MainPageView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3063516B2BD7F78200A0CCAA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 306351522BD7F78100A0CCAA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 306351592BD7F78100A0CCAA;
+			remoteInfo = splitEase;
+		};
+		306351752BD7F78200A0CCAA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 306351522BD7F78100A0CCAA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 306351592BD7F78100A0CCAA;
+			remoteInfo = splitEase;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		303D21512BDB720100F5B51F /* InputBillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputBillView.swift; sourceTree = "<group>"; };
+		303D21552BDBEF5000F5B51F /* textField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textField.swift; sourceTree = "<group>"; };
+		3063515A2BD7F78100A0CCAA /* splitEase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = splitEase.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3063515D2BD7F78100A0CCAA /* splitEaseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = splitEaseApp.swift; sourceTree = "<group>"; };
+		3063515F2BD7F78100A0CCAA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		306351612BD7F78200A0CCAA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		306351642BD7F78200A0CCAA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3063516A2BD7F78200A0CCAA /* splitEaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = splitEaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3063516E2BD7F78200A0CCAA /* splitEaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = splitEaseTests.swift; sourceTree = "<group>"; };
+		306351742BD7F78200A0CCAA /* splitEaseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = splitEaseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		306351782BD7F78200A0CCAA /* splitEaseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = splitEaseUITests.swift; sourceTree = "<group>"; };
+		3063517A2BD7F78200A0CCAA /* splitEaseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = splitEaseUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3065209D2BDD05C400C60256 /* tesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tesView.swift; sourceTree = "<group>"; };
+		3065209F2BDD0C4900C60256 /* ItemInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemInputView.swift; sourceTree = "<group>"; };
+		3081D02B2BDE5F1A00224BF9 /* BillDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillDetailsView.swift; sourceTree = "<group>"; };
+		30DD0D632BE0915200B3A315 /* AddPersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPersonView.swift; sourceTree = "<group>"; };
+		30DD0D652BE0A43300B3A315 /* PickMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickMenuView.swift; sourceTree = "<group>"; };
+		30E003FD2BE2485D0031A3C6 /* pilimenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pilimenuView.swift; sourceTree = "<group>"; };
+		30E003FF2BE26CBA0031A3C6 /* FinalBillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalBillView.swift; sourceTree = "<group>"; };
+		30E0854B2BDA05E7002DF3A4 /* MainPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageView.swift; sourceTree = "<group>"; };
+		30E0854D2BDA9DFF002DF3A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		306351572BD7F78100A0CCAA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		306351672BD7F78200A0CCAA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		306351712BD7F78200A0CCAA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		306351512BD7F78100A0CCAA = {
+			isa = PBXGroup;
+			children = (
+				3063515C2BD7F78100A0CCAA /* splitEase */,
+				3063516D2BD7F78200A0CCAA /* splitEaseTests */,
+				306351772BD7F78200A0CCAA /* splitEaseUITests */,
+				3063515B2BD7F78100A0CCAA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3063515B2BD7F78100A0CCAA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3063515A2BD7F78100A0CCAA /* splitEase.app */,
+				3063516A2BD7F78200A0CCAA /* splitEaseTests.xctest */,
+				306351742BD7F78200A0CCAA /* splitEaseUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3063515C2BD7F78100A0CCAA /* splitEase */ = {
+			isa = PBXGroup;
+			children = (
+				30E0854D2BDA9DFF002DF3A4 /* Info.plist */,
+				3063515D2BD7F78100A0CCAA /* splitEaseApp.swift */,
+				3063515F2BD7F78100A0CCAA /* ContentView.swift */,
+				3065209F2BDD0C4900C60256 /* ItemInputView.swift */,
+				303D21512BDB720100F5B51F /* InputBillView.swift */,
+				3081D02B2BDE5F1A00224BF9 /* BillDetailsView.swift */,
+				3065209D2BDD05C400C60256 /* tesView.swift */,
+				30E0854B2BDA05E7002DF3A4 /* MainPageView.swift */,
+				303D21552BDBEF5000F5B51F /* textField.swift */,
+				30DD0D632BE0915200B3A315 /* AddPersonView.swift */,
+				30DD0D652BE0A43300B3A315 /* PickMenuView.swift */,
+				30E003FF2BE26CBA0031A3C6 /* FinalBillView.swift */,
+				30E003FD2BE2485D0031A3C6 /* pilimenuView.swift */,
+				306351612BD7F78200A0CCAA /* Assets.xcassets */,
+				306351632BD7F78200A0CCAA /* Preview Content */,
+			);
+			path = splitEase;
+			sourceTree = "<group>";
+		};
+		306351632BD7F78200A0CCAA /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				306351642BD7F78200A0CCAA /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3063516D2BD7F78200A0CCAA /* splitEaseTests */ = {
+			isa = PBXGroup;
+			children = (
+				3063516E2BD7F78200A0CCAA /* splitEaseTests.swift */,
+			);
+			path = splitEaseTests;
+			sourceTree = "<group>";
+		};
+		306351772BD7F78200A0CCAA /* splitEaseUITests */ = {
+			isa = PBXGroup;
+			children = (
+				306351782BD7F78200A0CCAA /* splitEaseUITests.swift */,
+				3063517A2BD7F78200A0CCAA /* splitEaseUITestsLaunchTests.swift */,
+			);
+			path = splitEaseUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		306351592BD7F78100A0CCAA /* splitEase */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3063517E2BD7F78200A0CCAA /* Build configuration list for PBXNativeTarget "splitEase" */;
+			buildPhases = (
+				306351562BD7F78100A0CCAA /* Sources */,
+				306351572BD7F78100A0CCAA /* Frameworks */,
+				306351582BD7F78100A0CCAA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = splitEase;
+			productName = splitEase;
+			productReference = 3063515A2BD7F78100A0CCAA /* splitEase.app */;
+			productType = "com.apple.product-type.application";
+		};
+		306351692BD7F78200A0CCAA /* splitEaseTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 306351812BD7F78200A0CCAA /* Build configuration list for PBXNativeTarget "splitEaseTests" */;
+			buildPhases = (
+				306351662BD7F78200A0CCAA /* Sources */,
+				306351672BD7F78200A0CCAA /* Frameworks */,
+				306351682BD7F78200A0CCAA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3063516C2BD7F78200A0CCAA /* PBXTargetDependency */,
+			);
+			name = splitEaseTests;
+			productName = splitEaseTests;
+			productReference = 3063516A2BD7F78200A0CCAA /* splitEaseTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		306351732BD7F78200A0CCAA /* splitEaseUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 306351842BD7F78200A0CCAA /* Build configuration list for PBXNativeTarget "splitEaseUITests" */;
+			buildPhases = (
+				306351702BD7F78200A0CCAA /* Sources */,
+				306351712BD7F78200A0CCAA /* Frameworks */,
+				306351722BD7F78200A0CCAA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				306351762BD7F78200A0CCAA /* PBXTargetDependency */,
+			);
+			name = splitEaseUITests;
+			productName = splitEaseUITests;
+			productReference = 306351742BD7F78200A0CCAA /* splitEaseUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		306351522BD7F78100A0CCAA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					306351592BD7F78100A0CCAA = {
+						CreatedOnToolsVersion = 15.2;
+					};
+					306351692BD7F78200A0CCAA = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 306351592BD7F78100A0CCAA;
+					};
+					306351732BD7F78200A0CCAA = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 306351592BD7F78100A0CCAA;
+					};
+				};
+			};
+			buildConfigurationList = 306351552BD7F78100A0CCAA /* Build configuration list for PBXProject "splitEase" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 306351512BD7F78100A0CCAA;
+			productRefGroup = 3063515B2BD7F78100A0CCAA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				306351592BD7F78100A0CCAA /* splitEase */,
+				306351692BD7F78200A0CCAA /* splitEaseTests */,
+				306351732BD7F78200A0CCAA /* splitEaseUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		306351582BD7F78100A0CCAA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				306351652BD7F78200A0CCAA /* Preview Assets.xcassets in Resources */,
+				306351622BD7F78200A0CCAA /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		306351682BD7F78200A0CCAA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		306351722BD7F78200A0CCAA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		306351562BD7F78100A0CCAA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				303D21522BDB720100F5B51F /* InputBillView.swift in Sources */,
+				306520A02BDD0C4900C60256 /* ItemInputView.swift in Sources */,
+				30E004002BE26CBA0031A3C6 /* FinalBillView.swift in Sources */,
+				3065209E2BDD05C400C60256 /* tesView.swift in Sources */,
+				303D21562BDBEF5000F5B51F /* textField.swift in Sources */,
+				3081D02C2BDE5F1B00224BF9 /* BillDetailsView.swift in Sources */,
+				306351602BD7F78100A0CCAA /* ContentView.swift in Sources */,
+				30E003FE2BE2485D0031A3C6 /* pilimenuView.swift in Sources */,
+				30DD0D662BE0A43300B3A315 /* PickMenuView.swift in Sources */,
+				30DD0D642BE0915200B3A315 /* AddPersonView.swift in Sources */,
+				3063515E2BD7F78100A0CCAA /* splitEaseApp.swift in Sources */,
+				30E0854C2BDA05E7002DF3A4 /* MainPageView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		306351662BD7F78200A0CCAA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3063516F2BD7F78200A0CCAA /* splitEaseTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		306351702BD7F78200A0CCAA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				306351792BD7F78200A0CCAA /* splitEaseUITests.swift in Sources */,
+				3063517B2BD7F78200A0CCAA /* splitEaseUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3063516C2BD7F78200A0CCAA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 306351592BD7F78100A0CCAA /* splitEase */;
+			targetProxy = 3063516B2BD7F78200A0CCAA /* PBXContainerItemProxy */;
+		};
+		306351762BD7F78200A0CCAA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 306351592BD7F78100A0CCAA /* splitEase */;
+			targetProxy = 306351752BD7F78200A0CCAA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		3063517C2BD7F78200A0CCAA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3063517D2BD7F78200A0CCAA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3063517F2BD7F78200A0CCAA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"splitEase/Preview Content\"";
+				DEVELOPMENT_TEAM = C8496U3L79;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = splitEase/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ciputra.splitEase;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		306351802BD7F78200A0CCAA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"splitEase/Preview Content\"";
+				DEVELOPMENT_TEAM = C8496U3L79;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = splitEase/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ciputra.splitEase;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		306351822BD7F78200A0CCAA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ciputra.splitEaseTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/splitEase.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/splitEase";
+			};
+			name = Debug;
+		};
+		306351832BD7F78200A0CCAA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ciputra.splitEaseTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/splitEase.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/splitEase";
+			};
+			name = Release;
+		};
+		306351852BD7F78200A0CCAA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ciputra.splitEaseUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = splitEase;
+			};
+			name = Debug;
+		};
+		306351862BD7F78200A0CCAA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ciputra.splitEaseUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = splitEase;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		306351552BD7F78100A0CCAA /* Build configuration list for PBXProject "splitEase" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3063517C2BD7F78200A0CCAA /* Debug */,
+				3063517D2BD7F78200A0CCAA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3063517E2BD7F78200A0CCAA /* Build configuration list for PBXNativeTarget "splitEase" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3063517F2BD7F78200A0CCAA /* Debug */,
+				306351802BD7F78200A0CCAA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		306351812BD7F78200A0CCAA /* Build configuration list for PBXNativeTarget "splitEaseTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				306351822BD7F78200A0CCAA /* Debug */,
+				306351832BD7F78200A0CCAA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		306351842BD7F78200A0CCAA /* Build configuration list for PBXNativeTarget "splitEaseUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				306351852BD7F78200A0CCAA /* Debug */,
+				306351862BD7F78200A0CCAA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 306351522BD7F78100A0CCAA /* Project object */;
+}
