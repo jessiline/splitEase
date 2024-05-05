@@ -33,7 +33,7 @@ struct AddPersonView: View {
                         Text("Add Person")
                         Spacer()
                     }
-                    .foregroundColor(.black)
+                    .foregroundColor(.blue)
                     .padding(.top,30)
                     .padding(.bottom,25)
                     .padding(.leading,5)

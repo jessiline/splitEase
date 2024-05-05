@@ -65,9 +65,10 @@ struct InputBillView: View {
                                     .padding(.top)
                                 Text("Add Item")
                                     .padding(.top)
-                                    .foregroundColor(.gray)
                                 Spacer()
                             }
+                            .foregroundColor(.blue)
+
                         }
                         .onReceive(itemInputs.publisher) { _ in
                             let total = itemInputs.reduce(0) { $0 + (Int($1.hasilKali.replacingOccurrences(of: ".", with: "")) ?? 0) }

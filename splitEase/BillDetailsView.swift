@@ -99,7 +99,8 @@ struct BillDetailsView: View {
                                 .frame(width: 50, alignment: .leading)
                             
                             Spacer()
-                            Text("\(itemInputs[index].hasilKali)")                                .padding(.trailing, 18)
+                            Text("\(itemInputs[index].hasilKali)")                                
+                                .padding(.trailing, 18)
                                 .frame(width: 105, alignment: .trailing)
                             
                         }
