@@ -13,6 +13,33 @@ struct FinalBillView: View {
     @Binding var tax: String
     @Binding var discountBawah: String
     @Binding var totalAmount: String
+    
+    var newTax: Int {
+        if !tax.isEmpty && tax != "0" {
+            if let taxInt = Int(tax.replacingOccurrences(of: ".", with: "")) {
+                return taxInt / selectedOptionStates.keys.count
+            }
+        }
+        return 0
+    }
+    var newServiceCharge: Int {
+        if !serviceCharge.isEmpty && serviceCharge != "0" {
+            if let serviceChargeInt = Int(serviceCharge.replacingOccurrences(of: ".", with: "")) {
+                return serviceChargeInt / selectedOptionStates.keys.count
+            }
+        }
+        return 0
+    }
+    
+    var newDiscountBawah: Int {
+        if !discountBawah.isEmpty && discountBawah != "0" {
+            if let discountBawahInt = Int(discountBawah.replacingOccurrences(of: ".", with: "").replacingOccurrences(of: "-", with: "")) {
+                return discountBawahInt / selectedOptionStates.keys.count
+            }
+        }
+        return 0
+    }
+    
     var body: some View {
         VStack {
             Text("")
@@ -27,51 +54,71 @@ struct FinalBillView: View {
                         counts[state.itemInput.itemName, default: 0] += 1
                     }
                 
-                // Iterate through selectedOptionStates
+                HStack{
+                    Text("Total: \(totalAmount)")
+                        .padding(.leading, 18)
+                        .foregroundStyle(.gray)
+                    Spacer()
+                }
+                .padding(.top,5)
+                Text("_____________________________________________")
+                    .font(.caption)
+                    .foregroundStyle(.gray)
+                    .padding(.bottom)
+                
                 ForEach(selectedOptionStates.sorted(by: { $0.key < $1.key }), id: \.key) { (person, states) in
-                    
                     VStack(alignment: .leading) {
                         HStack{
                             Text("\(person)'s total")
 
                             Spacer()
+                            
+                            
+                            
+                            
                             let totalPerPerson = states.reduce(0) { result, state in
-                            if state.isChecked {
-                                if !state.newDiscount.isEmpty {
-                                    if let newHasilKaliNumeric = Int(state.newHasilKali.replacingOccurrences(of: ".", with: "")), let newHasildiskon = Int(state.newDiscount.replacingOccurrences(of: ".", with: "")), let count = itemCounts[state.itemInput.itemName], count > 1 {
-                                        if count != 0 {
-                                            return result + (newHasilKaliNumeric / count) - (newHasildiskon/count)
+                                if state.isChecked {
+                                    if !state.newDiscount.isEmpty {
+                                        if let newHasilKaliNumeric = Int(state.newHasilKali.replacingOccurrences(of: ".", with: "")), let newHasildiskon = Int(state.newDiscount.replacingOccurrences(of: ".", with: "")), let count = itemCounts[state.itemInput.itemName], count > 1 {
+                                            if count != 0 {
+                                                return result + (newHasilKaliNumeric / count) - (newHasildiskon/count)
+                                            }
+                                        }
+                                        else{
+                                            if let newHasilKaliNumeric = Int(state.newHasilKali.replacingOccurrences(of: ".", with: "")),
+                                               let newDiscountNumeric = Int(state.newDiscount.replacingOccurrences(of: ".", with: "")) {
+                                                return result + newHasilKaliNumeric - newDiscountNumeric
+                                            }
                                         }
                                     }
                                     else{
                                         if let newHasilKaliNumeric = Int(state.newHasilKali.replacingOccurrences(of: ".", with: "")),
-                                           let newDiscountNumeric = Int(state.newDiscount.replacingOccurrences(of: ".", with: "")) {
-                                            return result + newHasilKaliNumeric - newDiscountNumeric
+                                           let count = itemCounts[state.itemInput.itemName], count > 1 {
+                                            if count != 0 {
+                                                return result + (newHasilKaliNumeric / count)
+                                            }
+                                        } else {
+                                            if let newHasilKaliNumeric = Int(state.newHasilKali.replacingOccurrences(of: ".", with: "")) {
+                                                return result + newHasilKaliNumeric 
+                                            }
                                         }
                                     }
+                                
+                                    
                                 }
-                                else{
-                                    if let newHasilKaliNumeric = Int(state.newHasilKali.replacingOccurrences(of: ".", with: "")),
-                                       let count = itemCounts[state.itemInput.itemName], count > 1 {
-                                        if count != 0 {
-                                            return result + (newHasilKaliNumeric / count)
-                                        }
-                                    } else {
-                                        if let newHasilKaliNumeric = Int(state.newHasilKali.replacingOccurrences(of: ".", with: "")) {
-                                            return result + newHasilKaliNumeric
-                                        }
-                                    }
-                                }
+                                return result
                             }
-                            return result
+                            
+                            let tott = totalPerPerson + (newTax + newServiceCharge - newDiscountBawah)
+                            Text("\(tott)")
+                                .padding(.trailing, 18)
+                            
                         }
-                        Text("\(totalPerPerson)")
-                            .padding(.trailing, 18)
-                        }
-                        .font(.headline)
+                        .font(.title3)
+                        .fontWeight(.semibold)
                         .padding(.bottom)
                         .padding(.leading)
-                        
+                
                         // Filter checked items
                         let filteredStates = states.filter { $0.isChecked }
                         
@@ -118,7 +165,7 @@ struct FinalBillView: View {
                                             HStack {
                                                 Text("Discounts")
                                                     .padding(.leading, 30)
-                                                    .foregroundStyle(.gray) // Set foreground color
+                                                    .foregroundStyle(.gray)
                                                 Spacer()
                                                 Text("-\(diskonFinal)")
                                                     .padding(.trailing, 18)
@@ -127,9 +174,9 @@ struct FinalBillView: View {
                                         }
                                     } else {
                                         HStack {
-                                            Text("Discounts")
+                                            Text("item's discount")
                                                 .padding(.leading, 30)
-                                                .foregroundStyle(.gray) // Set foreground color
+                                                .foregroundStyle(.gray)
                                             Spacer()
                                             Text("-\(state.newDiscount)")
                                                 .padding(.trailing, 18)
@@ -138,67 +185,48 @@ struct FinalBillView: View {
                                     }
                                     
                                 }
+                                
                             }
                             .padding(.bottom)
-
                         }
+                        
+                       
+                        HStack {
+                            Text("Tax")
+                                .padding(.leading, 30)
+                                .foregroundStyle(.gray)
+                            Spacer()
+                            Text("+\(newTax)")
+                                .padding(.trailing, 18)
+                                .foregroundStyle(.green)
+                        }
+                        HStack {
+                            Text("Service charge")
+                                .padding(.leading, 30)
+                                .foregroundStyle(.gray)
+                            Spacer()
+                            Text("+\(newServiceCharge)")
+                                .padding(.trailing, 18)
+                                .foregroundStyle(.green)
+                        }
+                        HStack {
+                            Text("Discounts")
+                                .padding(.leading, 30)
+                                .foregroundStyle(.gray)
+                            Spacer()
+                            Text("-\(newDiscountBawah)")
+                                .padding(.trailing, 18)
+                                .foregroundStyle(.green)
+                        }
+                            
                     }
                     Text("----------------------------------------------------")
                         .font(.caption)
                         .foregroundStyle(.gray)
                         .padding(.bottom,10)
-                }
-                HStack{
-                    Text("Subtotal")
-                        .padding(.leading, 18)
-                        .foregroundStyle(.gray)
-                    Spacer()
-                    Text(subtotal)
-                        .padding(.trailing, 18)
-                }
-                .padding(.top,20)
+                        .padding(.top,5)
 
-                HStack{
-                    Text("Tax")
-                        .padding(.leading, 18)
-                        .foregroundStyle(.gray)
-                    Spacer()
-                    Text(tax)
-                        .padding(.trailing, 18)
                 }
-                .padding(.top,5)
-
-                HStack{
-                    Text("Service charge")
-                        .padding(.leading, 18)
-                        .foregroundStyle(.gray)
-                    Spacer()
-                    Text(serviceCharge)
-                        .padding(.trailing, 18)
-                }
-                .padding(.top,5)
-
-                HStack{
-                    Text("Discounts")
-                        .padding(.leading, 18)
-                        .foregroundStyle(.gray)
-                    Spacer()
-                    Text(discountBawah)
-                        .padding(.trailing, 18)
-                }
-                .padding(.top,5)
-
-                HStack{
-                    Text("Total amount")
-                        .padding(.leading, 18)
-                        .foregroundStyle(.gray)
-                    Spacer()
-                    Text(totalAmount)
-                        .padding(.trailing, 18)
-                        .font(.headline)
-                }
-                .padding(.top,5)
-                .padding(.bottom,20)
 
             }
             .frame(width: 333)
