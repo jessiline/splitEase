@@ -32,9 +32,6 @@ struct ItemInputView: View {
                         .stroke(Color.gray, lineWidth: 1)
                         .padding(.leading,18)
                 )
-                .onChange(of: itemName) { newValue in
-                    print("Typed \(newValue) in group \(index)")
-                }
             Button(action: {
                 isActionSheetVisible = true
             }) {

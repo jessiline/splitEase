@@ -46,7 +46,7 @@ struct BillDetailsView: View {
                 
         
                 // Add new item
-            let newItem = ItemInput(itemName: "\(itemInputs[index].itemName) (\(count))",
+            let newItem = ItemInput(itemName: "\(itemInputs[index].itemName)(\(count))",
                                     price: formatNumber(price),
                                     qty: "\(1)",
                                     hasilKali: formatNumber(price),
@@ -57,8 +57,6 @@ struct BillDetailsView: View {
 
         }
     
-
-    
     @Binding var subtotal: String
     @Binding var serviceCharge: String
     @Binding var tax: String
@@ -66,6 +64,8 @@ struct BillDetailsView: View {
     @Binding var totalAmount: String
     @Binding var itemInputs: [ItemInput] // Array untuk menyimpan data item
     @State private var names: [String] = []
+    
+    
     var body: some View {
             VStack{
                 Text("")
@@ -73,57 +73,56 @@ struct BillDetailsView: View {
                 ScrollView{
                     Text("")
                     ForEach(itemInputs.indices, id: \.self) { index in
-                        if let cekItem = Double(itemInputs[index].hasilKali), cekItem != 0 {
-                            HStack{
-                                Text("\(itemInputs[index].itemName)")
-                                    .padding(.leading, 18)
-                                Spacer()
-                                if let cekQty = Double(itemInputs[index].qty), cekQty > 1 {
-                                    Button(action: {
-                                        splitItem(index: index)
-                                    }) {
-                                        Text("Split")
-                                            .padding(.trailing, 18)
-                                    }
-                                }
-                            }
-                            
-                            HStack{
-                                Text("\(itemInputs[index].price)")
-                                    .padding(.leading, 18)
-                                    .foregroundStyle(.gray)
-                                    .frame(width: 140, alignment: .leading)
-                                
-                                Spacer()
-                                Text("\(itemInputs[index].qty) x")
-                                    .foregroundStyle(.gray)
-                                    .frame(width: 50, alignment: .leading)
-                                
-                                Spacer()
-                                Text("\(itemInputs[index].hasilKali)")                                .padding(.trailing, 18)
-                                    .frame(width: 105, alignment: .trailing)
-                                
-                            }
-                            .padding(.vertical,5)
-                            
-                            if let discount = Double(itemInputs[index].discount), discount != 0 {
-                                HStack {
-                                    Text("Discounts")
-                                        .padding(.leading, 18)
-                                        .foregroundColor(.secondary)
-                                    Spacer()
-                                    Text("-\(itemInputs[index].discount)")
+                        HStack{
+                            Text("\(itemInputs[index].itemName)")
+                                .padding(.leading, 18)
+                            Spacer()
+                            if let cekQty = Double(itemInputs[index].qty), cekQty > 1 {
+                                Button(action: {
+                                    splitItem(index: index)
+                                }) {
+                                    Text("Split")
                                         .padding(.trailing, 18)
-                                        .foregroundStyle(.green)
                                 }
                             }
-                            
-                            
-                            Text("----------------------------------------------------")
-                                .font(.caption)
+                        }
+                        
+                        HStack{
+                            Text("\(itemInputs[index].price)")
+                                .padding(.leading, 18)
                                 .foregroundStyle(.gray)
+                                .frame(width: 140, alignment: .leading)
+                            
+                            Spacer()
+                            Text("\(itemInputs[index].qty) x")
+                                .foregroundStyle(.gray)
+                                .frame(width: 50, alignment: .leading)
+                            
+                            Spacer()
+                            Text("\(itemInputs[index].hasilKali)")                                .padding(.trailing, 18)
+                                .frame(width: 105, alignment: .trailing)
                             
                         }
+                        .padding(.vertical,5)
+                        
+                        if let discount = Double(itemInputs[index].discount), discount != 0 {
+                            HStack {
+                                Text("Discounts")
+                                    .padding(.leading, 18)
+                                    .foregroundColor(.secondary)
+                                Spacer()
+                                Text("-\(itemInputs[index].discount)")
+                                    .padding(.trailing, 18)
+                                    .foregroundStyle(.green)
+                            }
+                        }
+                        
+                        
+                        Text("----------------------------------------------------")
+                            .font(.caption)
+                            .foregroundStyle(.gray)
+                        
+                    
 
                     }
                     HStack{
@@ -218,6 +217,9 @@ struct BillDetailsView: View {
             .background(Color(red: 0.81, green: 0.87, blue: 0.80))
             .navigationBarBackButtonHidden(true)
             .font(.system(size: 15))
+            .onAppear(){
+                itemInputs.removeAll(where: { $0.hasilKali.isEmpty })
+            }
     }
     
 }

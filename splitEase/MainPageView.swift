@@ -8,6 +8,7 @@ struct MainPageView: View {
     @State private var selectedImage: UIImage?
     @State private var isShowingCamera = false
     @State private var recognizedText: String?
+    
     // Variabel-variabel untuk inputBillView
     @State private var subtotal: String = ""
     @State private var serviceCharge: String = ""
@@ -28,7 +29,7 @@ struct MainPageView: View {
                     .padding()
                 VStack(spacing: 0.5) {
                     Button(action: {
-                        isShowingCamera = true  // Set the flag to true to present the scanner
+                        isShowingCamera = true
                     }) {
                         ZStack(alignment : .leading){
                             UnevenRoundedRectangle(topLeadingRadius: 20, topTrailingRadius: 20)
@@ -42,8 +43,8 @@ struct MainPageView: View {
                                     Image(systemName: "camera")
                                         .resizable()
                                         .aspectRatio(contentMode: .fit)
-                                        .frame(width: 20, height: 20) // Adjust the size of the camera icon as needed
-                                        .foregroundColor(.black) // Change the color of the camera icon as needed
+                                        .frame(width: 20, height: 20)
+                                        .foregroundColor(.black)
                                 }
                                 .padding(.leading)
                                 VStack(alignment : .leading){
@@ -62,7 +63,6 @@ struct MainPageView: View {
                         .frame(width: 286, height: 63)
                     }
                     .sheet(isPresented: $isShowingCamera) {
-                        // Present the camera when the flag is true
                         CameraViewController(isShowingCamera: $isShowingCamera, recognizedText: $recognizedText)
                     }
                     
@@ -120,8 +120,8 @@ struct MainPageView: View {
                             Image(systemName: "square.and.pencil")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(width: 20, height: 20) // Adjust the size of the camera icon as needed
-                                .foregroundColor(.black) // Change the color of the camera icon as needed
+                                .frame(width: 20, height: 20)
+                                .foregroundColor(.black)
                         }
                         .padding(.leading)
                         NavigationLink(destination: InputBillView(itemInputs: $itemInputs, subtotal: $subtotal, serviceCharge: $serviceCharge, tax: $tax, discountBawah: $discountBawah, totalAmount: $totalAmount).navigationBarTitle("Input Bill Details")) {
@@ -145,6 +145,7 @@ struct MainPageView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color(red: 255/255, green: 253/255, blue: 231/255))
         }
+        .navigationBarBackButtonHidden(true)
     }
     func processImage() {
         guard let selectedImage = selectedImage else {
@@ -152,15 +153,12 @@ struct MainPageView: View {
             return
         }
         
-        // Unwrap the optional CIImage
         guard let ciImage = CIImage(image: selectedImage) else {
             print("Failed to create CIImage from selected image.")
             return
         }
         
-        // Perform text recognition using Vision framework
         let request = VNRecognizeTextRequest { request, error in
-            // Handle recognition results or errors
             guard let observations = request.results as? [VNRecognizedTextObservation] else {
                 return
             }
@@ -169,7 +167,6 @@ struct MainPageView: View {
                 observation.topCandidates(1).first?.string
             }.joined(separator: "\n")
             
-            // Output recognized text
             print(recognizedText)
         }
         
@@ -184,13 +181,12 @@ struct MainPageView: View {
 }
 
 struct CameraViewController: UIViewControllerRepresentable {
-    @Binding var isShowingCamera: Bool // Binding to control the presentation of the camera
-    @Binding var recognizedText: String? // Binding to hold the recognized text
-    
+    @Binding var isShowingCamera: Bool
+    @Binding var recognizedText: String?
     func makeUIViewController(context: Context) -> UIViewController {
         let cameraViewController = UIImagePickerController()
-        cameraViewController.delegate = context.coordinator // Set coordinator as the delegate
-        cameraViewController.sourceType = .camera // Set source type to camera
+        cameraViewController.delegate = context.coordinator
+        cameraViewController.sourceType = .camera
         return cameraViewController
     }
     
@@ -200,7 +196,6 @@ struct CameraViewController: UIViewControllerRepresentable {
         Coordinator(parent: self)
     }
     
-    // Coordinator to handle delegate methods
     class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         var parent: CameraViewController
         
@@ -209,22 +204,17 @@ struct CameraViewController: UIViewControllerRepresentable {
         }
         
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-            // Handle the captured image here
             if let image = info[.originalImage] as? UIImage {
-                // Process the captured image
                 processImage(image)
             }
-            parent.isShowingCamera = false // Dismiss the camera
+            parent.isShowingCamera = false
         }
         
         func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-            parent.isShowingCamera = false // Dismiss the camera
+            parent.isShowingCamera = false
         }
         
         func processImage(_ image: UIImage) {
-            // Perform text extraction or any other processing here
-            // Example: You can use Vision framework for text recognition
-            // Note: Implementing text recognition requires additional code
             guard let ciImage = CIImage(image: image) else {
                 print("Failed to create CIImage from captured image.")
                 return
@@ -242,7 +232,6 @@ struct CameraViewController: UIViewControllerRepresentable {
                 
                 print("Recognized Text:")
                 print(recognizedText)
-                // Assign recognized text to the parent view's state
                 self.parent.recognizedText = recognizedText
             }
             

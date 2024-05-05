@@ -17,7 +17,7 @@ struct InputBillView: View {
     @Binding var tax: String
     @Binding var discountBawah: String
     @Binding var totalAmount: String
-
+    @State private var showAlert = false
 
     var numberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -26,6 +26,15 @@ struct InputBillView: View {
         return formatter
     }()
     
+    private var isItemInputEmpty: Bool {
+        return itemInputs.allSatisfy { itemInput in
+            itemInput.itemName.isEmpty &&
+            itemInput.price.isEmpty &&
+            itemInput.qty.isEmpty &&
+            itemInput.hasilKali.isEmpty &&
+            itemInput.discount.isEmpty
+        }
+    }
     var body: some View {
             VStack() {
                 VStack {
@@ -76,7 +85,6 @@ struct InputBillView: View {
                                     
                                 }
                                 TextField("", text: $subtotal)
-//                                    .font(.system(size: 15))
                                     .padding(.trailing, 30)
                                     .background(Color.clear)
                                     .cornerRadius(12)
@@ -116,8 +124,6 @@ struct InputBillView: View {
                                         tax = formatted
                                         calculateResult()
                                     }
-                                
-                                
                                 
                             }
                             .padding(.top,5)
@@ -237,8 +243,17 @@ struct InputBillView: View {
                         .cornerRadius(10)
                         
                     }
+                    .disabled(itemInputs.allSatisfy { $0.hasilKali.isEmpty }) 
                     .opacity(isTextFieldFocused ? 0 : 1)
                     .padding(.vertical, isTextFieldFocused ? -20 : 20)
+                    .alert(isPresented: $showAlert) {
+                        Alert(title: Text("Error"), message: Text("Input Data!"), dismissButton: .default(Text("OK")))
+                    }
+                    .onTapGesture {
+                        if itemInputs.allSatisfy { $0.hasilKali.isEmpty } {
+                            showAlert = true
+                        }
+                    }
                 }
                 .onChange(of: deleteIndex) { index in
                     if let index = index {

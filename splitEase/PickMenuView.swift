@@ -1,6 +1,7 @@
 import SwiftUI
 
-struct ItemInputState {
+struct ItemInputState: Hashable {
+    var itemName: String
     var qty: Int {
         didSet {
             updateNewHasilKali()
@@ -12,7 +13,6 @@ struct ItemInputState {
     var newDiscount: String
 
     private mutating func updateNewHasilKali() {
-        // Update newHasilKali when qty changes
         let price = itemInput.price.replacingOccurrences(of: ".", with: "")
         if let priceValue = Double(price) {
             let newHasilKaliValue = priceValue * Double(qty)
@@ -40,8 +40,23 @@ struct ItemInputState {
             }
         }
     }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(itemName) // Use itemName for hashing
+        hasher.combine(qty)
+        hasher.combine(isChecked)
+        hasher.combine(newHasilKali)
+        hasher.combine(newDiscount)
+    }
 
-    var itemInput: ItemInput // Keep a reference to the original ItemInput
+    static func == (lhs: ItemInputState, rhs: ItemInputState) -> Bool {
+        return lhs.itemName == rhs.itemName && // Compare itemName
+               lhs.qty == rhs.qty &&
+               lhs.isChecked == rhs.isChecked &&
+               lhs.newHasilKali == rhs.newHasilKali &&
+               lhs.newDiscount == rhs.newDiscount
+    }
+    var itemInput: ItemInput 
 }
 
 struct PickMenuView: View {
@@ -54,7 +69,7 @@ struct PickMenuView: View {
     @Binding var itemInputs: [ItemInput]
     @State private var selectedOption: String? = nil
     @State private var selectedOptionStates: [String: [ItemInputState]] = [:]
-
+    @State private var showAlert = false
     @State private var isExpanded = false
 
     var body: some View {
@@ -116,88 +131,89 @@ struct PickMenuView: View {
 
                 ForEach(itemInputs.indices, id: \.self) { index in
                     if let states = selectedOptionStates[selectedOption ?? ""] {
-                        let inputState = Binding<ItemInputState>(
-                            get: {
-                                return states[index]
-                            },
-                            set: { newValue in
-                                var newStates = selectedOptionStates[selectedOption ?? ""] ?? []
-                                newStates[index] = newValue
-                                selectedOptionStates[selectedOption ?? ""] = newStates
-                            }
-                        )
-
-                        HStack {
-                            Text("\(itemInputs[index].itemName)")
-                                .padding(.leading, 18)
-                            Spacer()
-                            Button(action: {
-                                inputState.wrappedValue.isChecked.toggle()
-                            }) {
-                                Image(systemName: inputState.wrappedValue.isChecked ? "checkmark.circle" : "circle")
-                                    .font(.system(size: 18))
-                                    .padding(.trailing)
-                                    .foregroundColor(.black)
-                            }
-                        }
-
-                        HStack{
-                            Text("\(itemInputs[index].price)")
-                                .padding(.leading, 18)
-                                .foregroundStyle(.gray)
-                                .frame(width: 100, alignment: .leading)
-
-                            Spacer()
-                            VStack {
-                                HStack {
-                                    Button(action: {
-                                        if inputState.wrappedValue.qty > 0 {
-                                            inputState.wrappedValue.qty -= 1
-                                        }
-                                    }) {
-                                        Image(systemName: "minus")
-                                    }
-                                    Text("\(inputState.wrappedValue.qty)")
-                                    Button(action: {
-                                        if inputState.wrappedValue.qty < Int(itemInputs[index].qty) ?? 0 {
-                                            inputState.wrappedValue.qty += 1
-                                        }
-                                    }) {
-                                        Image(systemName: "plus")
-                                    }
+                        if let itemStateIndex = states.firstIndex(where: { $0.itemName == itemInputs[index].itemName }) {
+                            let itemState = Binding<ItemInputState>(
+                                get: { states[itemStateIndex] },
+                                set: { newValue in
+                                    var updatedStates = states
+                                    updatedStates[itemStateIndex] = newValue
+                                    selectedOptionStates[selectedOption ?? ""] = updatedStates
                                 }
-                                .padding(.vertical,5)
-                                .padding(.horizontal,10)
-                                .foregroundColor(.black)
-                                .background(Color.gray.opacity(0.2))
-                                .cornerRadius(20)
-                            }
-
-                            Spacer()
-                            Text("\(inputState.wrappedValue.newHasilKali)") // Display newHasilKali
-                                .padding(.trailing, 18)
-                                .frame(width: 105, alignment: .trailing)
-
-                        }
-                        .padding(.vertical,5)
-
-                        if let discount = Double(itemInputs[index].discount), discount != 0 {
+                            )
+                            
                             HStack {
-                                Text("Discounts")
+                                Text("\(itemInputs[index].itemName)")
                                     .padding(.leading, 18)
-                                    .foregroundColor(.secondary)
                                 Spacer()
-                                Text("-\(inputState.wrappedValue.newDiscount)") // Display newDiscount
-                                    .padding(.trailing, 18)
-                                    .foregroundStyle(.green)
+                                Button(action: {
+                                    itemState.wrappedValue.isChecked.toggle()
+                                }) {
+                                    Image(systemName: itemState.wrappedValue.isChecked ? "checkmark.circle" : "circle")
+                                        .font(.system(size: 18))
+                                        .padding(.trailing)
+                                        .foregroundColor(.black)
+                                }
                             }
+                            
+                            HStack{
+                                Text("\(itemInputs[index].price)")
+                                    .padding(.leading, 18)
+                                    .foregroundStyle(.gray)
+                                    .frame(width: 100, alignment: .leading)
+                                
+                                Spacer()
+                                VStack {
+                                    HStack {
+                                        Button(action: {
+                                            if itemState.wrappedValue.qty > 0 {
+                                                itemState.wrappedValue.qty -= 1
+                                            }
+                                        }) {
+                                            Image(systemName: "minus")
+                                        }
+                                        Text("\(itemState.wrappedValue.qty)")
+                                        Button(action: {
+                                            if itemState.wrappedValue.qty < Int(itemInputs[index].qty) ?? 0 {
+                                                itemState.wrappedValue.qty += 1
+                                            }
+                                        }) {
+                                            Image(systemName: "plus")
+                                        }
+                                    }
+                                    .padding(.vertical,5)
+                                    .padding(.horizontal,10)
+                                    .foregroundColor(.black)
+                                    .background(Color.gray.opacity(0.2))
+                                    .cornerRadius(20)
+                                }
+                                
+                                Spacer()
+                                Text("\(itemState.wrappedValue.newHasilKali)") // Display newHasilKali
+                                    .padding(.trailing, 18)
+                                    .frame(width: 105, alignment: .trailing)
+                                
+                            }
+                            .padding(.vertical,5)
+                            
+                            if let discount = Double(itemInputs[index].discount), discount != 0 {
+                                HStack {
+                                    Text("Discounts")
+                                        .padding(.leading, 18)
+                                        .foregroundColor(.secondary)
+                                    Spacer()
+                                    Text("-\(itemState.wrappedValue.newDiscount)") // Display newDiscount
+                                        .padding(.trailing, 18)
+                                        .foregroundStyle(.green)
+                                }
+                            }
+                            
+                            Text("----------------------------------------------------")
+                                .font(.caption)
+                                .foregroundStyle(.gray)
+                                .padding(.bottom,10)
                         }
-
-                        Text("----------------------------------------------------")
-                            .font(.caption)
-                            .foregroundStyle(.gray)
-                            .padding(.bottom,10)
                     }
+                    
                 }
             }
             .frame(width: 333)
@@ -205,7 +221,7 @@ struct PickMenuView: View {
             .cornerRadius(10)
             .font(.callout)
             
-            NavigationLink(destination: FinalBillView().navigationBarTitle("Bill Details")) {
+            NavigationLink(destination: FinalBillView(selectedOptionStates: $selectedOptionStates,subtotal: $subtotal, serviceCharge: $serviceCharge, tax: $tax, discountBawah: $discountBawah, totalAmount: $totalAmount).navigationBarTitle("Bill Details")) { // Passing selectedOptionStates to FinalBillView
                 HStack {
                     Image(systemName: "checkmark.circle")
                         .padding(.vertical)
@@ -219,10 +235,23 @@ struct PickMenuView: View {
                 .cornerRadius(10)
             }
             .padding(.vertical,20)
+            .disabled(selectedOptionStates.allSatisfy { $0.value.allSatisfy { !$0.isChecked } })
+            .alert(isPresented: $showAlert) {
+                Alert(title: Text("Error"), message: Text("Input Data!"), dismissButton: .default(Text("OK")))
+            }
+            .onTapGesture {
+                if selectedOptionStates.allSatisfy { $0.value.allSatisfy { !$0.isChecked } } {
+                    showAlert = true
+                }
+            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(red: 0.81, green: 0.87, blue: 0.80))
         .font(.system(size: 15))
+        .onAppear(){
+            itemInputs.removeAll(where: { $0.hasilKali.isEmpty })
+            names.removeAll(where: { $0.isEmpty })
+        }
     }
 
     private func initializeSelectedOptionStates() {
@@ -232,7 +261,7 @@ struct PickMenuView: View {
                 let qty = Int(input.qty) ?? 0
                 let newHasilKali = calculateNewHasilKali(itemInput: input, qty: qty)
                 let newDiscount = calculateNewDiscount(itemInput: input, qty: qty)
-                initialStates.append(ItemInputState(qty: qty, isChecked: false, newHasilKali: newHasilKali, newDiscount: newDiscount, itemInput: input))
+                initialStates.append(ItemInputState(itemName: input.itemName, qty: qty, isChecked: false, newHasilKali: newHasilKali, newDiscount: newDiscount, itemInput: input))
             }
             selectedOptionStates[name] = initialStates
         }

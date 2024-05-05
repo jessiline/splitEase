@@ -10,13 +10,6 @@ import SwiftUI
 struct AddPersonView: View {
     @Binding var names: [String]
     @FocusState private var isTextFieldFocused: Bool
-    
-//    @State private var subtotal: String = ""
-//    @State private var serviceCharge: String = ""
-//    @State private var tax: String = ""
-//    @State private var discountBawah: String = ""
-//    @State private var totalAmount: String = ""
-//    @State private var itemInputs: [ItemInput] = [ItemInput()]
     @Binding var subtotal: String
     @Binding var serviceCharge: String
     @Binding var tax: String
@@ -24,6 +17,7 @@ struct AddPersonView: View {
     @Binding var totalAmount: String
     @Binding var itemInputs: [ItemInput]
     @State private var selectedOption: String?
+    @State private var showAlert = false
 
     var body: some View {
         VStack{
@@ -85,18 +79,20 @@ struct AddPersonView: View {
                         .cornerRadius(10)
                 
             }
+            .disabled(names.allSatisfy { $0.isEmpty })
             .opacity(isTextFieldFocused ? 0 : 1)
             .padding(.vertical, isTextFieldFocused ? -20 : 20)
+            .alert(isPresented: $showAlert) {
+                Alert(title: Text("Error"), message: Text("Input Data!"), dismissButton: .default(Text("OK")))
+            }
+            .onTapGesture {
+                if names.allSatisfy { $0.isEmpty } {
+                    showAlert = true
+                }
+            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(red: 0.81, green: 0.87, blue: 0.80))
         .font(.system(size: 15))
     }
 }
-
-//struct AddPersonView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let names = Binding.constant([""]) // Inisialisasi Binding untuk names
-//        return AddPersonView(names: names)
-//    }
-//}
